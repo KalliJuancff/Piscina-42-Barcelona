@@ -1,3 +1,7 @@
 - 42 Header:
   https://github.com/42Paris/42header/tree/master
 
+- 42 norminette:
+  https://github.com/42School/norminette
+  + 
+  https://www.youtube.com/watch?v=v_hn_VTMftc
