@@ -6,42 +6,50 @@
 /*   By: jfidalgo <jfidalgo@student.42bar(...).com  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/01 13:31:41 by jfidalgo          #+#    #+#             */
-/*   Updated: 2024/01/01 14:24:44 by jfidalgo         ###   ########.fr       */
+/*   Updated: 2024/01/01 16:40:31 by jfidalgo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <unistd.h>
-#include <stdio.h>
 
-void	print_justified_number(int n)
+void	print_digit(int digit)
 {
-	printf("%02d", n);
-	return;
+	char	character;
 
+	character = digit + '0';
+	write (1, &character, 1);
+}
+
+void	print_number(int n)
+{
 	if (n < 10)
-		write (1, "0", 1);
-	char digit = n + '0';
-	write (1, &digit, 1);
+	{
+		print_digit(0);
+		print_digit(n);
+	}
+	else
+	{
+		print_digit(n / 10);
+		print_digit(n % 10);
+	}
 }
 
 void	ft_print_comb2(void)
 {
 	int	number1;
 	int	number2;
-	
+
 	number1 = 0;
 	while (number1 <= 98)
 	{
 		number2 = number1 + 1;
 		while (number2 <= 99)
-		{	
-			print_justified_number (number1);
-			// write (1, " ", 1);
-			printf(" ");
-			print_justified_number(number2);
+		{
+			print_number (number1);
+			write (1, " ", 1);
+			print_number(number2);
 			if (!(number1 == 98 && number2 == 99))
 			{
-				// write (1, ", ", 2);
-				printf(", ");
+				write (1, ", ", 2);
 			}
 			number2++;
 		}
@@ -49,8 +57,10 @@ void	ft_print_comb2(void)
 	}
 }
 
+/*
 int	main(void)
 {
 	ft_print_comb2();
 	return (0);
 }
+*/
